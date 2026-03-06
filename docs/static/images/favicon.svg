@@ -1,37 +1,42 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<circle style="fill:#FFDA44;" cx="256" cy="256" r="256"/>
-<path style="fill:#338AF3;" d="M0,256C0,114.616,114.616,0,256,0s256,114.616,256,256"/>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="256" height="256" aria-label="GIFT robot gripper favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f7ff"/>
+      <stop offset="100%" stop-color="#e5ebff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1.5" y="1.5" width="61" height="61" rx="15" fill="url(#bg)"/>
+
+  <!-- tabletop -->
+  <rect x="5" y="45" width="54" height="6" rx="3" fill="#5b6475"/>
+  <rect x="10" y="51" width="5" height="10" rx="2.4" fill="#8a93a5"/>
+  <rect x="49" y="51" width="5" height="10" rx="2.4" fill="#8a93a5"/>
+
+  <!-- robot base -->
+  <rect x="6" y="32" width="15" height="10" rx="5" fill="#4b5568"/>
+  <circle cx="22" cy="31" r="5.8" fill="#6d7890"/>
+
+  <!-- arm links -->
+  <g fill="none" stroke="#6e7cff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 31 L35 19" stroke-width="9"/>
+    <path d="M35 19 L49 25" stroke-width="9"/>
+    <path d="M49 25 L54 17.5" stroke-width="7.6"/>
+  </g>
+
+  <!-- joints -->
+  <circle cx="35" cy="19" r="4.2" fill="#3c4a67"/>
+  <circle cx="49" cy="25" r="4.2" fill="#3c4a67"/>
+  <circle cx="54" cy="17.5" r="3.5" fill="#3c4a67"/>
+
+  <!-- explicit parallel-jaw gripper -->
+  <g fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 17.5 L57.3 14.4" stroke-width="4.2"/>
+    <path d="M57.3 14.4 L60.5 12.3" stroke-width="4.2"/>
+    <path d="M57.5 14.3 L62 16.8 L60.2 20.1" stroke-width="3.5"/>
+    <path d="M56.8 15.2 L61 10.2 L63.5 12.5" stroke-width="3.5"/>
+  </g>
+
+  <!-- object being grasped -->
+  <rect x="59.2" y="13.8" width="4.3" height="4.3" rx="1.1" fill="#f59e0b" transform="rotate(18 61.35 15.95)"/>
 </svg>
