@@ -8,8 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GIFT: Generalizing Intent for Flexible Test-Time Rewards</title>
 
-  <!-- NOTE: Removed Google Analytics from the Nerfies template. -->
-
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -28,29 +26,10 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
+
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://mit-clear-lab.github.io/">
-        <span class="icon"><i class="fas fa-home"></i></span>
-      </a>
-      <a class="navbar-item" href="#abstract">Abstract</a>
-      <a class="navbar-item" href="#method">Method</a>
-      <a class="navbar-item" href="#results">Results</a>
-      <a class="navbar-item" href="#video">Video</a>
-      <a class="navbar-item" href="#BibTeX">BibTeX</a>
-    </div>
-  </div>
-</nav>
+<!-- Removed the top navigation row entirely (the links above the title). -->
 
 <section class="hero">
   <div class="hero-body">
@@ -63,9 +42,9 @@
           </h1>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="#">Fin Amin</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="#">Nathaniel Dennler</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">Andreea Bobu</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://finamintoastcrunch.github.io/" target="_blank" rel="noopener noreferrer">Fin Amin</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://ndennler.github.io/" target="_blank" rel="noopener noreferrer">Nathaniel Dennler</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.mit.edu/~abobu/" target="_blank" rel="noopener noreferrer">Andreea Bobu</a><sup>2</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -73,6 +52,7 @@
             <span class="author-block"><sup>2</sup>MIT CSAIL</span>
           </div>
 
+          <!-- Restored the links under the title -->
           <div class="column has-text-centered">
             <div class="publication-links">
 
@@ -81,7 +61,7 @@
                 <a href="./static/pdfs/GIFT__Test_Time_Reward_Generalization_from_Human_Intent.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
+                  <span>Paper (coming soon!)</span>
                 </a>
               </span>
 
@@ -90,34 +70,25 @@
                 <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv (TBD)</span>
+                  <span>arXiv</span>
                 </a>
               </span>
 
-              <!-- Video Link -->
+              <!-- More Link -->
               <span class="link-block">
-                <a href="#video"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Video</span>
-                </a>
-              </span>
-
-              <!-- Code Link -->
-              <span class="link-block">
-                <a href="https://github.com/MIT-CLEAR-Lab/GIFT"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
+                <a href="https://clear.csail.mit.edu/"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                  <span>More</span>
                 </a>
               </span>
 
             </div>
           </div>
 
-          <div class="is-size-6" style="margin-top: 10px;">
+          <div class="is-size-4" style="margin-top: 14px;">
             <p>
-              Learn a reward once; generalize at test time by aligning states using inferred human intent.
+              <p>How can a robot generalize a learned reward by reasoning about <em>what the human intended</em>, not what looks or sounds similar?</p>
             </p>
           </div>
 
@@ -127,24 +98,26 @@
   </div>
 </section>
 
+<!-- Swapped the first two images -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
 
-      <!-- Teaser image (you already have this file in static/images) -->
-      <img src="./static/images/GiftArchV2.png" alt="GIFT teaser" style="width:100%; border-radius: 8px;"/>
+      <img src="./static/images/behaviorDiagramV4.png" alt="GIFT pipeline teaser"
+           style="width:100%; border-radius: 8px;"/>
 
-      <h2 class="subtitle has-text-centered" style="margin-top: 12px;">
-        GIFT infers high-level intent from demonstrations, then uses that intent to align novel test states to
-        behaviorally equivalent training states for reward evaluation and planning.
-      </h2>
+      <p class="has-text-justified" style="margin-top: 12px; font-size: 1.15rem; line-height: 1.35;">
+        <strong>Top.</strong>
+        During training, the robot receives task demonstrations (loading a paintbrush) and uses them to infer the user's
+        <em>high-level intent</em> (“load art supplies”). <strong>Bottom.</strong> At test time, the robot encounters three unseen objects. GIFT uses the inferred intent to correctly identify that the molding clay is relevant. In contrast, visual-similarity baselines incorrectly prefer the dish scrubber due to its appearance, and language-similarity baselines make an analogous mistake (“<em>tooth<strong>brush</strong></em>” and “<em>paint<strong>brush</strong></em>”).
+      </p>
+
     </div>
   </div>
 </section>
 
 <section class="section" id="abstract">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -166,81 +139,179 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <section class="section" id="method">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
-          <p>
-            GIFT uses language models in two stages:
-          </p>
-          <ol>
-            <li>
-              <b>Infer intent.</b> Given human-preferred demonstrations and reference (non-preferred) trajectories,
-              the LM summarizes the high-level intent that explains the difference.
-            </li>
-            <li>
-              <b>Align test states under intent.</b> At deployment, the inferred intent conditions an LM-based similarity
-              function that matches elements in a novel test state to intent-equivalent elements from training states.
-              The robot then reuses the reward learned in training without retraining.
-            </li>
-          </ol>
-        </div>
+
+        <h2 class="title is-3">How Gift Works</h2>
+        <!-- <h3 class="title is-4" style="margin-top: 0.5rem;">How GIFT Works</h3> -->
 
         <div class="content has-text-centered">
-          <img src="./static/images/behaviorDiagram.png" alt="GIFT pipeline" style="width:100%; max-width: 900px; border-radius: 8px;"/>
-          <p class="is-size-7">Overview of GIFT.</p>
+          <div style="width:100%; max-width:900px; margin:0 auto; overflow:hidden; line-height:0;">
+            <img src="./static/images/GiftArchV2.png" alt="GIFT pipeline"
+                style="width:100%; display:block; margin:0 0 -16% 0;" />
+          </div>
+          <p class="is-size-6" style="margin:0.2rem auto 0 auto; max-width:900px; text-align:left;">
+            <b>G</b>eneralizing <b>I</b>ntent for <b>F</b>lexible <b>T</b>est-Time rewards.
+            <b>Left.</b> GIFT infers the human's intent given pairs of human-preferred demonstrations and reference trajectories.
+            <b>Right.</b> During inference, GIFT deduces which objects in the unseen states should behave as objects in the training states.
+            Afterwards, the unseen state components are aligned to training states so that the reward function learned before deployment can be used for planning.
+          </p>
         </div>
+
+        <div class="content has-text-justified" style="margin-top: 1.25rem;">
+          <p>
+            GIFT achieves test-time reward generalization by defining a state similarity function conditioned on the human’s high-level intent.
+            This allows novel test states to be mapped into the training domain so the learned reward can be reused without retraining.
+          </p>
+
+          <p>
+            <b>Inferring high-level intent.</b> GIFT first infers the user’s underlying intent by contrasting human-preferred demonstrations
+            with reference trajectories from the same scenes. The LM outputs a natural-language summary of the high-level intent that explains
+            why the preferred behavior is preferred.
+          </p>
+
+          <p>
+            <b>Intent-conditioned alignment.</b> Given the inferred intent, GIFT treats states as similar based on that intent rather than
+            low-level visual or language features. At test time, GIFT aligns each novel state to its nearest intent-equivalent training state,
+            so unseen objects can be interpreted according to the same task-relevant roles seen during training.
+          </p>
+
+          <p>
+            <b>Test-time reward reuse.</b> After alignment, GIFT evaluates the aligned trajectory with the fixed reward learned on the training
+            data. In this way, the alignment operator carries the burden of generalization, while the reward itself remains unchanged at deployment.
+          </p>
+        </div>
+
       </div>
     </div>
+  </div>
+</section>
+<section class="section" id="experiments">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
 
+        <h2 class="title is-3">Experiments</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We evaluate whether intent-conditioned alignment improves test-time reward generalization under shifts in objects,
+            layouts, and robotic platform. We compare GIFT against visual similarity, language similarity, and LM-based mapping
+            without intent conditioning.
+          </p>
+
+          <h3 class="title is-4" style="margin-top: 1.0rem;">RQ1: Does intent-conditioned alignment improve test-time reward generalization?</h3>
+          <p>
+            We measure pairwise win rate at test time: given two candidate trajectories, can the method correctly predict which
+            behavior the human would prefer?
+          </p>
+
+          <div class="content has-text-centered" style="margin-top: 0.75rem;">
+            <img src="./static/images/winrate_by_env_task_2x2.png" alt="Pairwise win rate"
+                 style="width:100%; border-radius: 8px;"/>
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
+              Pairwise win rate across tasks and environments in simulation. Higher is better.
+            </p>
+          </div>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ2: Does GIFT recover the correct task-relevant roles under distribution shift?</h3>
+          <p>
+            We measure state-alignment F1, which evaluates whether test-time objects are mapped to the correct training-time roles
+            under the intended task semantics.
+          </p>
+
+          <div class="content has-text-centered" style="margin-top: 0.75rem;">
+            <img src="./static/images/f1_by_env_task.png" alt="State-alignment F1"
+                 style="width:100%; border-radius: 8px;"/>
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
+              State-alignment F1 across tasks and environments in simulation. Higher is better.
+            </p>
+          </div>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ3: Does GIFT transfer across robotic platforms and to the physical world?</h3>
+          <p>
+            We evaluate cross-platform transfer and real-world deployment, including experiments on a 7-DoF Franka Panda robot.
+          </p>
+
+          <div class="content has-text-centered" style="margin-top: 0.75rem;">
+            <img src="./static/images/lm1_jaco_vs_franka_bars_V3_text.png" alt="Cross-platform and real-world summary"
+                 style="width:100%; max-width:900px; border-radius: 8px;"/>
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
+              Cross-platform and real-world results summary.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="results">
+<section class="section" id="realworld">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Results</h2>
+
+        <h2 class="title is-3">Real-World Examples</h2>
 
         <div class="content has-text-justified">
           <p>
-            We evaluate GIFT on tabletop manipulation tasks with unseen objects and layouts, comparing against
-            similarity baselines based on vision embeddings, language embeddings, and an LM mapping that does not use
-            intent conditioning.
+            Below are example scenarios on a physical robot. Replace the placeholder videos with your final clips when ready.
           </p>
-        </div>
 
-        <div class="columns is-centered">
-          <div class="column">
-            <div class="content has-text-centered">
-              <img src="./static/images/winrate_by_env_task_2x2.png" alt="Pairwise win rate" style="width:100%; border-radius: 8px;"/>
-              <p class="is-size-7">Pairwise win rate (simulation).</p>
+          <h3 class="title is-4" style="margin-top: 1.0rem;">Scenario 1</h3>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <p><b>Baseline</b></p>
+                <video controls playsinline style="width: 100%; border-radius: 8px;">
+                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <p><b>GIFT</b></p>
+                <video controls playsinline style="width: 100%; border-radius: 8px;">
+                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
+                </video>
+              </div>
             </div>
           </div>
-          <div class="column">
-            <div class="content has-text-centered">
-              <img src="./static/images/f1_by_env_task.png" alt="State-alignment F1" style="width:100%; border-radius: 8px;"/>
-              <p class="is-size-7">State-alignment F1 (simulation).</p>
+
+          <h3 class="title is-4" style="margin-top: 1.0rem;">Scenario 2</h3>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content has-text-centered">
+                <p><b>Baseline</b></p>
+                <video controls playsinline style="width: 100%; border-radius: 8px;">
+                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <p><b>GIFT</b></p>
+                <video controls playsinline style="width: 100%; border-radius: 8px;">
+                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
+                </video>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="content has-text-centered" style="margin-top: 0.75rem;">
-          <img src="./static/images/lm1_jaco_vs_franka_bars_V3_text.png" alt="Cross-platform / real-world summary" style="width:100%; max-width: 900px; border-radius: 8px;"/>
-          <p class="is-size-7">Cross-platform / real-world summary.</p>
+          <p class="is-size-7" style="margin-top: 0.75rem;">
+            Note: rename video files to remove spaces for maximum compatibility.
+          </p>
         </div>
 
       </div>
     </div>
-
   </div>
 </section>
 
@@ -250,13 +321,12 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
 
-        <!-- Local MP4 (note: spaces are URL-encoded with %20) -->
         <div class="content">
           <video controls playsinline style="width: 100%; border-radius: 8px;">
             <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
           </video>
           <p class="is-size-7" style="margin-top: 8px;">
-            If this fails to load on GitHub Pages, rename the file to remove spaces (recommended).
+            Replace with a hosted embed (YouTube/Vimeo) or smaller MP4 if needed.
           </p>
         </div>
 
