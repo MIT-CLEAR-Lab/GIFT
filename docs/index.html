@@ -52,11 +52,9 @@
             <span class="author-block"><sup>2</sup>MIT CSAIL</span>
           </div>
 
-          <!-- Restored the links under the title -->
           <div class="column has-text-centered">
             <div class="publication-links">
 
-              <!-- Paper PDF Link -->
               <span class="link-block">
                 <a href="javascript:void(0);"
                   onclick="return false;"
@@ -67,7 +65,6 @@
                 </a>
               </span>
 
-              <!-- arXiv Link (TBD) -->
               <span class="link-block">
                 <a href="javascript:void(0);"
                   onclick="return false;"
@@ -78,7 +75,6 @@
                 </a>
               </span>
 
-              <!-- More Link -->
               <span class="link-block">
                 <a href="https://clear.csail.mit.edu/"
                   target="_blank"
@@ -103,20 +99,22 @@
   </div>
 </section>
 
-<!-- Swapped the first two images -->
-<section class="hero teaser">
+<section class="section" id="video">
   <div class="container is-max-desktop">
-    <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">ICRA Video Presentation</h2>
 
-      <img src="./static/images/behaviorDiagramV4.png" alt="GIFT pipeline teaser"
-           style="width:100%; border-radius: 8px;"/>
+        <div class="content">
+          <video controls playsinline style="width: 100%; border-radius: 8px;">
+            <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7" style="margin-top: 8px;">
 
-      <p class="has-text-justified" style="margin-top: 12px; font-size: 1.15rem; line-height: 1.35;">
-        <strong>Top.</strong>
-        During training, the robot receives task demonstrations (loading a paintbrush) and uses them to infer the user's
-        <em>high-level intent</em> (“load art supplies”). <strong>Bottom.</strong> At test time, the robot encounters three unseen objects. GIFT uses the inferred intent to correctly identify that the molding clay is relevant. In contrast, visual-similarity baselines incorrectly prefer the dish scrubber due to its appearance, and language-similarity baselines make an analogous mistake (“<em>tooth<strong>brush</strong></em>” and “<em>paint<strong>brush</strong></em>”).
-      </p>
+          </p>
+        </div>
 
+      </div>
     </div>
   </div>
 </section>
@@ -147,13 +145,29 @@
   </div>
 </section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+      <img src="./static/images/behaviorDiagramV4.png" alt="GIFT pipeline teaser"
+           style="width:100%; border-radius: 8px;"/>
+
+      <p class="has-text-justified" style="margin-top: 12px; font-size: 1.15rem; line-height: 1.35;">
+        <strong>Top.</strong>
+        During training, the robot receives task demonstrations (loading a paintbrush) and uses them to infer the user's
+        <em>high-level intent</em> (“load art supplies”). <strong>Bottom.</strong> At test time, the robot encounters three unseen objects. GIFT uses the inferred intent to correctly identify that the molding clay is relevant. In contrast, visual-similarity baselines incorrectly prefer the dish scrubber due to its appearance, and language-similarity baselines make an analogous mistake (“<em>tooth<strong>brush</strong></em>” and “<em>paint<strong>brush</strong></em>”).
+      </p>
+
+    </div>
+  </div>
+</section>
+
 <section class="section" id="method">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
 
-        <h2 class="title is-3">How Gift Works</h2>
-        <!-- <h3 class="title is-4" style="margin-top: 0.5rem;">How GIFT Works</h3> -->
+        <h2 class="title is-3">How GIFT Works</h2>
 
         <div class="content has-text-centered">
           <div style="width:100%; max-width:900px; margin:0 auto; overflow:hidden; line-height:0;">
@@ -196,6 +210,7 @@
     </div>
   </div>
 </section>
+
 <section class="section" id="experiments">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -253,6 +268,7 @@
               Test-time pairwise win rate across the four tasks. GIFT achieves the highest win rate across environments and unseen objects.
             </p>
           </div>
+
           <h3 class="title is-4" style="margin-top: 1.5rem;">RQ2: When do low-level visual and language features fail at test time?</h3>
           <p>
             We next study where low-level similarity breaks down. Each method maps a test-time object either to a training-time role
@@ -306,7 +322,6 @@
               </div>
               <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
                 Language-vision similarity plot for Pack Backpack with <i>Art Supplies</i>. 
-                <!-- Relevant unseen art supplies can look dissimilar to the training anchor, while distractors can appear spuriously close. -->
               </p>
             </div>
 
@@ -318,7 +333,6 @@
               </div>
               <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
                 Language-vision similarity plot for Store <i>Valuables</i> Into Drawer. 
-                <!-- Low-level similarity can confuse irrelevant items with the training anchor and fail to consistently capture value-relevant semantics. -->
               </p>
             </div>
 
@@ -344,8 +358,8 @@
       </div>
     </div>
   </div>
-
 </section>
+
 <section class="section" id="realworldrobots">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -418,9 +432,6 @@
   </div>
 </section>
 
-
-</section>
-
 <section class="section" id="rq4">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -457,28 +468,6 @@
           <p class="is-size-6" style="margin-top:0.9rem; text-align:left;">
             <b>Left.</b> GIFT correctly ignores the art supply and packs the notebook under the new intent.
             <b>Right.</b> GIFT treats the valuable bracelet as a distractor and stores the electronic headset instead.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="section" id="video">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">ICRA Video Presentation</h2>
-
-        <div class="content">
-          <video controls playsinline style="width: 100%; border-radius: 8px;">
-            <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
-          </video>
-          <p class="is-size-7" style="margin-top: 8px;">
-
           </p>
         </div>
 
