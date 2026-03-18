@@ -58,8 +58,10 @@
 
               <!-- Paper PDF Link -->
               <span class="link-block">
-                <a href="./static/pdfs/GIFT__Test_Time_Reward_Generalization_from_Human_Intent.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href="javascript:void(0);"
+                  onclick="return false;"
+                  aria-disabled="true"
+                  class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper (coming soon!)</span>
                 </a>
@@ -67,8 +69,10 @@
 
               <!-- arXiv Link (TBD) -->
               <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href="javascript:void(0);"
+                  onclick="return false;"
+                  aria-disabled="true"
+                  class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
@@ -77,12 +81,13 @@
               <!-- More Link -->
               <span class="link-block">
                 <a href="https://clear.csail.mit.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-external-link-alt"></i></span>
                   <span>More</span>
                 </a>
               </span>
-
             </div>
           </div>
 
@@ -200,49 +205,131 @@
 
         <div class="content has-text-justified">
           <p>
-            We evaluate whether intent-conditioned alignment improves test-time reward generalization under shifts in objects,
-            layouts, and robotic platform. We compare GIFT against visual similarity, language similarity, and LM-based mapping
-            without intent conditioning.
+            We evaluate GIFT on four tabletop manipulation tasks under test-time distribution shift, including unseen objects,
+            new layouts, and real-world deployment. We compare against visual similarity, language similarity, and an LM-based
+            mapping baseline without inferred intent.
           </p>
 
-          <h3 class="title is-4" style="margin-top: 1.0rem;">RQ1: Does intent-conditioned alignment improve test-time reward generalization?</h3>
           <p>
-            We measure pairwise win rate at test time: given two candidate trajectories, can the method correctly predict which
-            behavior the human would prefer?
+            The tasks span distinct forms of high-level intent:
+          </p>
+          <ul style="margin-top: 0.5rem;">
+            <li><b>Place Mug:</b> <i>avoid carrying liquids near water-sensitive objects.</i></li>
+            <li><b>Sweep Spill:</b> <i>move paper-based items away from a spill.</i></li>
+            <li><b>Pack Backpack:</b> <i>pack art supplies.</i></li>
+            <li><b>Store Into Drawer:</b> <i>store valuables.</i></li>
+          </ul>
+
+          <p>
+            Before evaluating reward generalization, we first verify that the LM infers reasonable high-level intents from
+            demonstrations. We then study three questions: whether intent-conditioned similarity improves test-time reward
+            performance, whether it improves state alignment under confounds, and whether it transfers to the physical world.
+          </p>
+
+          <h3 class="title is-4" style="margin-top: 1.25rem;">Sanity Check: Does the LM infer reasonable intents?</h3>
+          <p>
+            We compare LM-inferred intent against the ground-truth task intent in both simulation and real-world demonstrations.
+            This checks whether the inferred intent is a usable conditioning signal for alignment.
           </p>
 
           <div class="content has-text-centered" style="margin-top: 0.75rem;">
-            <img src="./static/images/winrate_by_env_task_2x2.png" alt="Pairwise win rate"
-                 style="width:100%; border-radius: 8px;"/>
-            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
-              Pairwise win rate across tasks and environments in simulation. Higher is better.
+            <img src="./static/images/lm1_jaco_vs_franka_bars_V3_text_vertical.png" alt="Similarity between LM-inferred intent and ground-truth intent"
+                 style="width:100%; max-width:700px; border-radius: 8px;"/>
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:700px; text-align:left;">
+              Similarity between LM-inferred intent and ground-truth intent for simulated Jaco and real-world Franka demonstrations. We gave the LM three demonstration pairs from a virtual Jaco robot and a real-world Franka robot, and tasked it with deducing the human's intent. We found that LMs produced an acceptable conditioning variable for alignment.
             </p>
           </div>
 
-          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ2: Does GIFT recover the correct task-relevant roles under distribution shift?</h3>
+          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ1: Does intent-conditioned similarity improve test-time reward performance?</h3>
           <p>
-            We measure state-alignment F1, which evaluates whether test-time objects are mapped to the correct training-time roles
-            under the intended task semantics.
+            We evaluate pairwise win rate: given two candidate trajectories, can the method correctly predict which behavior
+            the human would prefer at test time?
           </p>
 
           <div class="content has-text-centered" style="margin-top: 0.75rem;">
-            <img src="./static/images/f1_by_env_task.png" alt="State-alignment F1"
+            <img src="./static/images/winrate_by_env_task_2x2.png" alt="Test-time pairwise win rate"
                  style="width:100%; border-radius: 8px;"/>
             <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
-              State-alignment F1 across tasks and environments in simulation. Higher is better.
+              Test-time pairwise win rate across the four tasks. GIFT achieves the highest win rate across environments and unseen objects.
+            </p>
+          </div>
+          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ2: When do low-level visual and language features fail at test time?</h3>
+          <p>
+            We next study where low-level similarity breaks down. Each method maps a test-time object either to a training-time role
+            or to a distractor, and we evaluate the resulting alignment using F1, false positives, and false negatives. For the more
+            complex tasks, we also isolate confounding cases involving similar names, similar appearances, and objects whose grouping
+            depends on the intended task.
+          </p>
+
+          <div class="content has-text-centered" style="margin-top: 0.75rem;">
+            <img src="./static/images/f1_by_env_task_2x2.png" alt="Test-time state-alignment F1 score"
+                 style="width:100%; border-radius: 8px;"/>
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
+              Test-time state-alignment F1 across tasks. GIFT achieves the strongest overall alignment by conditioning on intent rather than surface similarity.
             </p>
           </div>
 
-          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ3: Does GIFT transfer across robotic platforms and to the physical world?</h3>
+          <div class="content has-text-centered" style="margin-top: 1.0rem;">
+            <div style="display:flex; gap:2%; align-items:flex-start; justify-content:center; flex-wrap:nowrap;">
+              <div style="flex:0 0 49%;">
+                <img src="./static/images/pathology_fPN_rates_store_valuables.png"
+                    alt="False positive and false negative rates for Store Into Drawer confounding states"
+                    style="width:100%; display:block; border-radius:8px;" />
+              </div>
+              <div style="flex:0 0 49%;">
+                <img src="./static/images/pathology_fPN_rates_pack_art_supplies.png"
+                    alt="False positive and false negative rates for Pack Backpack confounding states"
+                    style="width:100%; display:block; border-radius:8px;" />
+              </div>
+            </div>
+
+            <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
+              <strong>FP/FN (%) on the Confounding States, <span style="font-style:italic;">S</span><sub>conf</sub>.</strong>
+              GIFT remains low across categories by using intent-relevance. On the other hand, the oracle baselines merely retune thresholds and trade errors across confounds. Thresholding cannot correct a misaligned similarity signal, and therefore they show high errors. GIFT's ablation, LM<sub>No&nbsp;Intent</sub>, is less performant due to not recognizing which test states are intent relevant, leading to a high FN rate.
+            </p>
+          </div>
+
+          <p style="margin-top: 1rem;">
+            To understand these failures qualitatively, we also inspect how low-level language and vision similarities organize unseen objects.
+            In the <i>Pack Backpack</i> task, distractors such as <i>toothbrush</i> and <i>broomstick</i> are pulled toward <i>paintbrush</i>,
+            while relevant objects such as <i>molding clay</i> and <i>tablet with stylus</i> are pushed away. In the <i>Store Valuables</i> task,
+            low-level similarity makes <i>paper ring</i> appear too close to <i>diamond ring</i>, while other valuable items can appear too dissimilar.
+          </p>
+
+          <div style="display:flex; gap:1.25rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; margin-top:0.9rem;">
+            
+            <div class="content has-text-centered" style="flex:1 1 320px; max-width:520px; margin-top:0;">
+              <img src="./static/images/store_art_supplies_similarity_scatter_sim.png"
+                  alt="Language-vision similarity plot for pack backpack with art supplies"
+                  style="width:100%; border-radius:8px;"/>
+              <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
+                Language-vision similarity plot for <i>Pack Backpack with Art Supplies</i>. Relevant unseen art supplies can look dissimilar to the training anchor, while distractors can appear spuriously close.
+              </p>
+            </div>
+
+            <div class="content has-text-centered" style="flex:1 1 320px; max-width:520px; margin-top:0;">
+              <img src="./static/images/valuables_similarity_scatter_sim.png"
+                  alt="Language-vision similarity plot for store valuables"
+                  style="width:100%; border-radius:8px;"/>
+              <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
+                Language-vision similarity plot for <i>Store Valuables</i>. Low-level similarity can confuse irrelevant items with the training anchor and fail to consistently capture value-relevant semantics.
+              </p>
+            </div>
+
+          </div>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">RQ3: Does GIFT transfer to robots in the physical world?</h3>
           <p>
-            We evaluate cross-platform transfer and real-world deployment, including experiments on a 7-DoF Franka Panda robot.
+            We recreate two tasks on a 7-DoF Franka Panda robot using held-out physical objects. For each method, we repeatedly sample
+            small sets of executable candidate trajectories, score them with the induced reward, and convert those scores into a Boltzmann
+            distribution over the candidates. This tests whether intents inferred from real-world demonstrations can guide reward reuse at deployment.
           </p>
 
           <div class="content has-text-centered" style="margin-top: 0.75rem;">
-            <img src="./static/images/lm1_jaco_vs_franka_bars_V3_text.png" alt="Cross-platform and real-world summary"
+            <img src="./static/images/boltzmann_2x4_sem.png" alt="Real-world behavior on Franka"
                  style="width:100%; max-width:900px; border-radius: 8px;"/>
             <p class="is-size-6" style="margin:0.45rem auto 0 auto; max-width:900px; text-align:left;">
-              Cross-platform and real-world results summary.
+              Real-world behavior on Franka. GIFT places more probability mass on held-out objects that match the inferred intent, such as packing <i>molding clay</i> and storing valuable items, while treating confounds as distractors.
             </p>
           </div>
 
@@ -251,8 +338,9 @@
       </div>
     </div>
   </div>
-</section>
 
+
+</section>
 <section class="section" id="realworld">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
