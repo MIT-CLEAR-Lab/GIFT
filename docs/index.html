@@ -302,10 +302,11 @@
               <div style="width:100%; display:flex; justify-content:center; align-items:flex-start;">
                 <img src="./static/images/store_art_supplies_similarity_scatter_sim.png"
                     alt="Language-vision similarity plot for pack backpack with art supplies"
-                    style="width:92%; border-radius:8px;"/>
+                    style="width:95%; border-radius:8px;"/>
               </div>
               <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
-                Language-vision similarity plot for <i>Pack Backpack with Art Supplies</i>. Relevant unseen art supplies can look dissimilar to the training anchor, while distractors can appear spuriously close.
+                Language-vision similarity plot for Pack Backpack with <i>Art Supplies</i>. 
+                <!-- Relevant unseen art supplies can look dissimilar to the training anchor, while distractors can appear spuriously close. -->
               </p>
             </div>
 
@@ -316,7 +317,8 @@
                     style="width:100%; border-radius:8px;"/>
               </div>
               <p class="is-size-6" style="margin:0.45rem auto 0 auto; text-align:left;">
-                Language-vision similarity plot for <i>Store Valuables</i>. Low-level similarity can confuse irrelevant items with the training anchor and fail to consistently capture value-relevant semantics.
+                Language-vision similarity plot for Store <i>Valuables</i> Into Drawer. 
+                <!-- Low-level similarity can confuse irrelevant items with the training anchor and fail to consistently capture value-relevant semantics. -->
               </p>
             </div>
 
@@ -343,62 +345,71 @@
     </div>
   </div>
 
-
 </section>
-<section class="section" id="realworld">
+<section class="section" id="realworldrobots">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
 
-        <h2 class="title is-3">Real-World Examples</h2>
-
         <div class="content has-text-justified">
-          <p>
-            Below are example scenarios on a physical robot. Replace the placeholder videos with your final clips when ready.
-          </p>
 
-          <h3 class="title is-4" style="margin-top: 1.0rem;">Scenario 1</h3>
-          <div class="columns is-centered">
-            <div class="column">
-              <div class="content has-text-centered">
-                <p><b>Baseline</b></p>
-                <video controls playsinline style="width: 100%; border-radius: 8px;">
-                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
-                </video>
-              </div>
+          <h3 class="title is-5" style="margin-top: 0.25rem;">Pack Backpack with <i>Art Supplies</i></h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:0.75rem;">
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>GIFT: <span style="color:#f79646;">Molding Clay</span></b></p>
+              <video controls playsinline style="width:100%; border-radius:8px; border:3px solid #f79646;">
+                <source src="./static/videos/pack_moldingclay.mp4" type="video/mp4">
+              </video>
             </div>
-            <div class="column">
-              <div class="content has-text-centered">
-                <p><b>GIFT</b></p>
-                <video controls playsinline style="width: 100%; border-radius: 8px;">
-                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
-                </video>
-              </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>Vision Similarity: Dish Scrubber</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/pack_dishscrub.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>Language Similarity: Toothbrush</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/pack_toothbrush.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>LM No Intent: Salt Shaker</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/pack_salt.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
 
-          <h3 class="title is-4" style="margin-top: 1.0rem;">Scenario 2</h3>
-          <div class="columns is-centered">
-            <div class="column">
-              <div class="content has-text-centered">
-                <p><b>Baseline</b></p>
-                <video controls playsinline style="width: 100%; border-radius: 8px;">
-                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
-                </video>
-              </div>
+          <h3 class="title is-5" style="margin-top: 1.5rem;">Store <i>Valuables</i> Into Drawer</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:0.75rem;">
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>GIFT: <span style="color:#f79646;">iPhone</span></b></p>
+              <video controls playsinline style="width:100%; border-radius:8px; border:3px solid #f79646;">
+                <source src="./static/videos/store_iphone.mp4" type="video/mp4">
+              </video>
             </div>
-            <div class="column">
-              <div class="content has-text-centered">
-                <p><b>GIFT</b></p>
-                <video controls playsinline style="width: 100%; border-radius: 8px;">
-                  <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
-                </video>
-              </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>Vision Similarity: Paper Ring</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/store_paperRing.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>Language Similarity: Digital Clock</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/store_clock.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="content has-text-centered" style="margin:0;">
+              <p><b>LM No Intent: Hand Sanitizer</b></p>
+              <video controls playsinline style="width:100%; border-radius:8px;">
+                <source src="./static/videos/store_sanitizer.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
 
           <p class="is-size-7" style="margin-top: 0.75rem;">
-            Note: rename video files to remove spaces for maximum compatibility.
           </p>
         </div>
 
@@ -407,18 +418,67 @@
   </div>
 </section>
 
+
+</section>
+
+<section class="section" id="rq4">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <div class="content has-text-justified">
+          <h3 class="title is-4" style="margin-top: 0.25rem;">RQ4: Is GIFT <i>flexible</i> to various intents?</h3>
+          <p>
+            We also test whether GIFT can handle the same environments under different intents. In these examples, the task setup remains similar, but the relevant object category changes with the user’s intended goal.
+          </p>
+
+          <div style="display:flex; gap:1.25rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; margin-top:0.85rem;">
+
+            <div class="content has-text-centered" style="flex:1 1 320px; max-width:520px; margin:0;">
+              <video controls playsinline style="width:100%; border-radius:8px; border:3px solid #f79646;">
+                <source src="./static/videos/pack_readingMaterials_altIntent.mp4" type="video/mp4">
+              </video>
+              <p class="is-size-6" style="margin:0.55rem auto 0 auto; text-align:center;">
+                Pack backpack with <span style="color:#f79646;">reading materials</span>
+              </p>
+            </div>
+
+            <div class="content has-text-centered" style="flex:1 1 320px; max-width:520px; margin:0;">
+              <video controls playsinline style="width:100%; border-radius:8px; border:3px solid #f79646;">
+                <source src="./static/videos/store_electronics_altIntent.mp4" type="video/mp4">
+              </video>
+              <p class="is-size-6" style="margin:0.55rem auto 0 auto; text-align:center;">
+                Store <span style="color:#f79646;">electronics</span> into the drawer
+              </p>
+            </div>
+
+          </div>
+
+          <p class="is-size-6" style="margin-top:0.9rem; text-align:left;">
+            <b>Left.</b> GIFT correctly ignores the art supply and packs the notebook under the new intent.
+            <b>Right.</b> GIFT treats the valuable bracelet as a distractor and stores the electronic headset instead.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <section class="section" id="video">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
+        <h2 class="title is-3">ICRA Video Presentation</h2>
 
         <div class="content">
           <video controls playsinline style="width: 100%; border-radius: 8px;">
             <source src="./static/videos/GIFT%20ICRA26%20CR_compressed.mp4" type="video/mp4">
           </video>
           <p class="is-size-7" style="margin-top: 8px;">
-            Replace with a hosted embed (YouTube/Vimeo) or smaller MP4 if needed.
+
           </p>
         </div>
 
